@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado do Quiz</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 36px;
+        }
+
+        #score {
+            font-size: 48px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div style="background-color: black; padding: 20px; border: 2px solid white; border-radius: 10px;">
+        <h1>Resultado do Quiz</h1>
+        <p>Obrigado por jogar meu jogo <span id="nomeUsuario"></span>!</p>
+        <p>Sua pontuação é: <span id="score">0</span>/10</p>
+        <p>Créditos:</p>
+        <ul>
+            <li>Rafael</li>
+            <li>GRUPO: Rafael, Paulo, Pedro e Pietro</li>
+        </ul>
+    </div>
+
+    <script>
+        // Obtenha o nome da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const score = urlParams.get('score');
+
+        // Obtenha o nome do cookie
+        const cookies = document.cookie.split('; ');
+        let nome = "";
+        for (const cookie of cookies) {
+            const [cookieName, cookieValue] = cookie.split('=');
+            if (cookieName === "nome") {
+                nome = cookieValue;
+                break;
+            }
+        }
+
+        // Exiba o nome na página
+        document.getElementById('nomeUsuario').textContent = nome;
+
+        // Exiba a pontuação na página
+        if (score !== null) {
+            document.getElementById('score').textContent = score;
+        }
+    </script>
+</body>
+</html>

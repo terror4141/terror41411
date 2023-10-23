@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('https://images3.alphacoders.com/990/990552.jpg');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .frosted-glass {
+            background: rgba(255, 255, 255, 0.2); /* Cor do vidro fosco */
+            width: 300px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="frosted-glass">
+        <h2>Coloque seu Nome</h2>
+        <div class="input-container">
+            <input type="text" id="nomeInput" placeholder="Seu Nome" onkeydown="redirecionar(event)">
+        </div>
+    </div>
+
+    <script>
+        function redirecionar(event) {
+            if (event.key === "Enter") {
+                const nome = document.getElementById("nomeInput").value;
+                if (nome.trim() !== "") {
+                    // Salva o nome em um cookie
+                    document.cookie = `nome=${nome}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+                    // Redireciona para a página "index.html"
+                    window.location.href = "index.html";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
