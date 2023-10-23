@@ -13,6 +13,57 @@
             height: 100vh;
         }
 
+        .cookie-popup {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="cookie-popup" id="cookiePopup">
+        <p>Este site usa cookies para melhorar a sua experiência. Ao continuar a usar este site, você concorda com o uso de cookies.</p>
+        <button onclick="aceitarCookies()">Aceitar</button>
+    </div>
+
+    <script>
+        function aceitarCookies() {
+            const nome = document.getElementById("nomeInput").value;
+            if (nome.trim() !== "") {
+                document.cookie = `nome=${nome}; expires=Fri, 31 Dec 9999 23:59:59 GMT; path=/`;
+                document.getElementById("cookiePopup").style.display = "none";
+            }
+        }
+
+        // Verificar se o cookie de permissão já foi definido
+        const cookiesAceitos = document.cookie.includes("cookiesAceitos=true");
+
+        if (!cookiesAceitos) {
+            document.getElementById("cookiePopup").style.display = "block";
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('https://images3.alphacoders.com/990/990552.jpg');
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
         .frosted-glass {
             background: rgba(255, 255, 255, 0.2); /* Cor do vidro fosco */
             width: 300px;
